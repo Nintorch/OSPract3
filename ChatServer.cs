@@ -41,7 +41,7 @@ namespace OSPract3
 
         private async void StartServer()
         {
-            var tcpListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 8888);
+            var tcpListener = new TcpListener(IPAddress.Parse(ChatManager.Ip), ChatManager.Port);
             try
             {
                 tcpListener.Start();    // запускаем сервер

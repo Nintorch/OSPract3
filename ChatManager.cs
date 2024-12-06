@@ -15,10 +15,7 @@ namespace OSPract3
             TcpClient tcpClient = new();
             try
             {
-                await tcpClient.ConnectAsync(
-                    ConfigurationManager.AppSettings.Get("ip") ?? "",
-                    int.Parse(ConfigurationManager.AppSettings.Get("port") ?? "0")
-                    );
+                await tcpClient.ConnectAsync(Ip, Port);
                 if (tcpClient.Connected)
                     return new ChatClient(tcpClient);
                 else
@@ -32,5 +29,8 @@ namespace OSPract3
 
         public static string WrapMessage(string message)
             => $"Message ({DateTime.Now.ToShortDateString()} - {DateTime.Now.ToLongTimeString()}): {message}";
+
+        public static string Ip => ConfigurationManager.AppSettings.Get("ip") ?? "";
+        public static int Port => int.Parse(ConfigurationManager.AppSettings.Get("port") ?? "0");
     }
 }
