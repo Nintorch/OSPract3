@@ -10,7 +10,7 @@ namespace OSPract3
 {
     public class ChatServer : IChatMember
     {
-        private bool _running = true;
+        private volatile bool _running = true;
         private List<TcpClient> _clients = new();
 
         public ChatServer()
